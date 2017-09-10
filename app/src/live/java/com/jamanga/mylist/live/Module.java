@@ -1,8 +1,9 @@
 package com.jamanga.mylist.live;
 
-/**
- * Created by almei on 10.09.2017.
- */
+import com.jamanga.mylist.infrastructure.MyListApplication;
 
 public class Module {
+    public static void Register(MyListApplication application){
+        new LiveAccountServices(application);
+    }
 }

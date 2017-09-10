@@ -1,8 +1,5 @@
 package com.jamanga.mylist.infrastructure;
 
-/**
- * Created by almei on 10.09.2017.
- */
-
-public class Utiles {
+public class Utils {
+    public static final String FIRE_BARS_BASE_URL = "https://mylist-55543.firebaseio.com/";
 }

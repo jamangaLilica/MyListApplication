@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.jamanga.mylist.R;
 import com.jamanga.mylist.R2;
 import com.jamanga.mylist.services.AccountServices;
+import com.squareup.otto.Subscribe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,9 +55,18 @@ public class RegisterActivity extends BaseActivity {
         finish();
     }
 
-    @OnClick(R.id.activity_login_registerButton)
+    @OnClick(R2.id.activity_login_registerButton)
     public void setRegisterButton(){
         bus.post(new AccountServices.RegisterUserRequest(userName.getText().toString(),userEmail.getText().toString(),mProgressDialog));
+    }
+
+    @Subscribe
+    public void RegisterUser(AccountServices.RegisterUserResponse response){
+        if (!response.didSuceed()){
+            userEmail.setError(response.getPropertyError("email"));
+            userName.setError(response.getPropertyError("userName"));
+        }
+
     }
 
 }
